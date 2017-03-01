@@ -1,5 +1,5 @@
 {
-  "name": "color-palette",
+  "name": "color-palette-require",
   "version": "1.0.3",
   "description": "Get a color palette from a uri using phantomjs and color-thief",
   "homepage": "http://skratchdot.com/projects/color-palette",

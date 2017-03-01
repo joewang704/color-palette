@@ -1,0 +1,109 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.2.2/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/joe/workspace/color-palette',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/joe/.npm/color-palette/1.0.3/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/joe/.npm correctMkdir not in flight; initializing
+10 info lifecycle color-palette@1.0.3~prepublish: color-palette@1.0.3
+11 silly lifecycle color-palette@1.0.3~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/joe/.npm/color-palette/1.0.3/package.tgz',
+12 verbose tar pack   '/Users/joe/workspace/color-palette' ]
+13 verbose tarball /Users/joe/.npm/color-palette/1.0.3/package.tgz
+14 verbose folder /Users/joe/workspace/color-palette
+15 verbose addLocalTarball adding from inside cache /Users/joe/.npm/color-palette/1.0.3/package.tgz
+16 verbose correctMkdir /Users/joe/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd color-palette@1.0.3
+18 verbose afterAdd /Users/joe/.npm/color-palette/1.0.3/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/joe/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/joe/.npm/color-palette/1.0.3/package/package.json written
+21 silly publish { name: 'color-palette',
+21 silly publish   version: '1.0.3',
+21 silly publish   description: 'Get a color palette from a uri using phantomjs and color-thief',
+21 silly publish   homepage: 'http://skratchdot.com/projects/color-palette',
+21 silly publish   preferGlobal: true,
+21 silly publish   main: './lib/index.js',
+21 silly publish   bin: { 'color-palette': './lib/index.js' },
+21 silly publish   author: { name: 'skratchdot' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git://github.com/skratchdot/color-palette.git' },
+21 silly publish   bugs: { url: 'https://github.com/skratchdot/color-palette/issues' },
+21 silly publish   license: 'MIT',
+21 silly publish   scripts: { test: 'gulp test' },
+21 silly publish   dependencies:
+21 silly publish    { commander: '^2.5.0',
+21 silly publish      mustache: '^0.8.2',
+21 silly publish      onecolor: '^2.4.2',
+21 silly publish      phantom: '^0.7.0',
+21 silly publish      phantomjs: '^1.9.11' },
+21 silly publish   keywords:
+21 silly publish    [ 'color',
+21 silly publish      'palette',
+21 silly publish      'thief',
+21 silly publish      'file',
+21 silly publish      'image',
+21 silly publish      'png',
+21 silly publish      'jpg',
+21 silly publish      'gif',
+21 silly publish      'data',
+21 silly publish      'uri',
+21 silly publish      'url',
+21 silly publish      'phantomjs',
+21 silly publish      'color-palette',
+21 silly publish      'color-thief' ],
+21 silly publish   devDependencies:
+21 silly publish    { gulp: '^3.8.9',
+21 silly publish      'gulp-jshint': '^1.8.5',
+21 silly publish      'gulp-nodeunit': '0.0.5' },
+21 silly publish   readme: '# color-palette\n\n[![Build Status](https://travis-ci.org/skratchdot/color-palette.png?branch=master)](https://travis-ci.org/skratchdot/color-palette)\n[![Dependency Status](https://david-dm.org/skratchdot/color-palette.svg)](https://david-dm.org/skratchdot/color-palette)\n[![devDependency Status](https://david-dm.org/skratchdot/color-palette/dev-status.svg)](https://david-dm.org/skratchdot/color-palette#info=devDependencies)\n\n\n## Description\n\ncolor-palette is a command line tool that uses\n[phantomjs](http://phantomjs.org/) and [color-thief](https://github.com/lokesh/color-thief)\nto get a color palette from a website or an image.\nAny resource that can be opened in phantomjs can be used.\n\n\n## Installation\n\nInstall the command line tool globally by running:\n\n    npm install -g color-palette\n\n\n## Usage\n\n    Usage: color-palette [options] <resource>\n\n\n## Options\n\n    -h, --help               output usage information\n    -v, --version            output the version number\n    -s, --size <size>        the target size of the color palette (might return +/- 2)\n    -q, --quality <quality>  the quality of the colors (0 is highest, 10 is default)\n    -i, --image              add image to output\n    -o, --output [type]      specify the output type: text, json, or html\n\n\n## Examples\n\nGet a color palette for google.com\n```bash\n$ color-palette http://google.com\n      Resource: http://google.com\n       Success: true\nDominant Color: #2d2f2e\n       Palette: #dcd7d2,#2b2b2b,#2a5fe3,#d94835,#30a28f,#7a7a7a,#049451\n```\n\nGet a color palette for amazon.com, output should be in json format\n```bash\n$ color-palette -o json http://amazon.com\n{\n  "resource": "http://amazon.com",\n  "uri": "http://amazon.com",\n  "success": true,\n  "dominantColor": "#253a4f",\n  "palette": [\n    "#24364b",\n    "#dadbda",\n    "#84454a",\n    "#c38f3d",\n    "#758b9d",\n    "#ad8989",\n    "#2ea9c3"\n  ]\n}\n```\n\nGet an html report for amazon.com and open it\n```bash\n$ color-palette -o html http://amazon.com > output.html & open output.html\n\n# alternative version if you\'re using OSX w/ homebrew `brew install browser`:\n$ color-palette -o html http://amazon.com > output.html | browser\n```\n\nGet a color palette for reddit.com, include a screenshot in the json output\n```bash\ncolor-palette -i -j http://reddit.com > output.json\n```\n***NOTE: when including the image switch, the output is very large\ndue to the base64 encoded image data uri***\n\n\n## See Also\n\n- [Color Thief](http://lokeshdhakar.com/projects/color-thief/) - This is the library that \n  I use to get palette information in the color-palette cli.\n- [Pictaculous](http://www.pictaculous.com/) - Upload an image and get it\'s palatte. They provide\n  a [free api](http://www.pictaculous.com/api/) as well. At some point I might integrate this API\n  into the color-palette cli.\n- [url2png](https://www.url2png.com/) - An API for taking screenshots of websites. Currently, I\'m\n  using phantomjs for taking screenshots, but combining the url2png and pictaculous APIs would be\n  an alternative to using color-palette.\n\n\n## License\n\nCopyright (c) 2014 skratchdot  \nLicensed under the MIT license.\n\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '57bc11b15a328415d86495046699aa58ce0dd327',
+21 silly publish   _id: 'color-palette@1.0.3',
+21 silly publish   _shasum: '2d4b53ce8e6f64fc9c8c031b3509d25d5cad069a',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name color-palette
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'color-palette',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'color-palette',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/color-palette
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/joe/.npm/color-palette/1.0.3/package.tgz
+30 verbose stack Error: auth required for publishing
+30 verbose stack     at CachingRegistryClient.publish (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+30 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:137:14
+30 verbose stack     at mapToRegistry (/usr/local/lib/node_modules/npm/lib/utils/map-to-registry.js:62:3)
+30 verbose stack     at publish_ (/usr/local/lib/node_modules/npm/lib/publish.js:106:3)
+30 verbose stack     at Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+30 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+30 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+30 verbose stack     at chain (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+30 verbose stack     at /usr/local/lib/node_modules/npm/lib/publish.js:72:5
+30 verbose stack     at RES (/usr/local/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+31 verbose cwd /Users/joe/workspace/color-palette
+32 error Darwin 14.4.0
+33 error argv "/usr/local/Cellar/node/6.2.2/bin/node" "/usr/local/bin/npm" "publish"
+34 error node v6.2.2
+35 error npm  v3.9.5
+36 error code ENEEDAUTH
+37 error need auth auth required for publishing
+38 error need auth You need to authorize this machine using `npm adduser`
+39 verbose exit [ 1, true ]
