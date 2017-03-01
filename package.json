@@ -4,9 +4,9 @@
   "description": "Get a color palette from a uri using phantomjs and color-thief",
   "homepage": "http://skratchdot.com/projects/color-palette",
   "preferGlobal": true,
-  "main": "./lib/cli.js",
+  "main": "./lib/index.js",
   "bin": {
-    "color-palette": "./lib/cli.js"
+    "color-palette": "./lib/index.js"
   },
   "author": "skratchdot",
   "repository": {
